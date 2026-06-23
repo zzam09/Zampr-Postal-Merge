@@ -1,0 +1,2 @@
+- [Supabase setup](supabase-setup.md) — SUPABASE_DB_URL is the base HTTPS URL not a postgres:// string; use REST API or Management API for schema ops
+- [GitHub push method](github-push.md) — git remote add is blocked in main agent; use scripts/push-to-github.sh (clone + push pattern) instead
