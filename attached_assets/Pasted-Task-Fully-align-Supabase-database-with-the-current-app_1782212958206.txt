@@ -1,0 +1,102 @@
+Task: Fully align Supabase database with the current application requirements and fix all blocking issues.
+
+Project:
+- zamproject-hono (React frontend + Hono backend)
+
+Supabase access:
+- Use environment variables ONLY
+- Never hardcode credentials
+
+---
+
+PHASE 1: DATABASE INSPECTION
+
+Use Supabase CLI or direct API introspection to:
+- List all existing tables
+- List all columns per table
+- List all RLS policies
+- Identify blocked queries due to RLS
+- Identify unused or orphan tables
+
+---
+
+PHASE 2: APPLICATION REQUIREMENTS SCAN
+
+Scan frontend + backend code to detect required data models:
+
+Look for:
+- Supabase queries (select, insert, update, delete)
+- API endpoints using database
+- Auth usage
+- Feature modules (membership, profiles, payments, notifications, badges)
+
+Generate a REQUIRED SCHEMA LIST from the app.
+
+---
+
+PHASE 3: SCHEMA SYNCHRONIZATION
+
+Compare:
+- Existing Supabase schema
+VS
+- Required schema from app
+
+Then:
+- Create missing tables
+- Add missing columns
+- Fix schema mismatches
+- Ensure relationships are correct
+
+Do NOT delete existing data unless explicitly required.
+
+---
+
+PHASE 4: RLS POLICY FIX (MVP MODE)
+
+Current issue: database is locked due to RLS policies.
+
+Fix by applying MVP-safe policies:
+
+- Enable access for authenticated users
+- Allow users to access only their own rows where applicable
+- For shared tables (e.g. public content), allow read access
+- Ensure frontend + backend can read/write without blocking errors
+
+IMPORTANT:
+Do NOT fully disable RLS globally.
+Do NOT leave tables inaccessible.
+
+Goal:
+"Everything works, minimal safe policies only"
+
+---
+
+PHASE 5: SEED + MIGRATION SETUP
+
+- Generate supabase/migrations SQL files
+- Create seed file for test data
+- Ensure future deploys can rebuild DB from scratch
+
+---
+
+PHASE 6: CLEANUP
+
+- Remove any duplicate schema definitions
+- Remove unused DB adapters (Turso, D1, SQLite, etc.)
+- Ensure Supabase is the ONLY database system
+
+---
+
+FINAL OUTPUT:
+
+Provide:
+1. Missing tables created
+2. Columns added/changed
+3. RLS policies fixed
+4. Broken queries fixed
+5. Seed file created
+6. Migration files created
+7. Remaining risks or manual steps
+
+GOAL:
+Make Supabase fully usable for the app with zero blocked queries and minimal safe MVP security.
