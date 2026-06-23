@@ -1,0 +1,87 @@
+Task: Merge the Router-postal-v1 frontend into the zamproject-hono repository.
+
+Repositories:
+- Hono project: https://github.com/grandchasebank-arch/zamproject-hono.git
+- Router project: https://github.com/grandchasebank-arch/Router-postal-v1
+
+Steps:
+
+1. Clone both repositories locally.
+
+2. Generate a complete repository map for BOTH projects using Repomix CLI.
+   - Create:
+     - repomix-hono.md
+     - repomix-router.md
+   - Include folder structure, key files, dependencies, scripts, configs, environment requirements, and architecture overview.
+
+3. Analyze and compare both repositories.
+   - Identify framework versions.
+   - Check package.json dependencies.
+   - Check build tools (Vite, React, TypeScript, etc.).
+   - Check routing setup.
+   - Check environment variables.
+   - Check API integrations.
+   - Check Supabase usage.
+   - Identify potential conflicts before merging.
+
+4. Migrate Router-postal-v1 into the frontend directory of zamproject-hono.
+   - Preserve existing Hono backend structure.
+   - Place the Router-postal-v1 application inside the frontend folder.
+   - Update imports, aliases, configs, and scripts as needed.
+   - Ensure frontend and backend can run together without conflicts.
+
+5. Remove obsolete documentation.
+   - Delete old .md instruction files that are outdated, duplicated, or no longer relevant.
+   - Keep only documentation that is still actively required.
+
+6. Create new documentation:
+   - PROJECT_SETUP.md
+   - MIGRATION_REPORT.md
+   - NEXT_STEPS.md
+
+7. PROJECT_SETUP.md should contain:
+   - Project architecture overview
+   - Frontend structure
+   - Backend structure
+   - Environment variables required
+   - Local development instructions
+   - Build instructions
+   - Deployment instructions
+   - Supabase integration notes
+
+8. MIGRATION_REPORT.md should contain:
+   - Files moved
+   - Files modified
+   - Conflicts found
+   - Conflicts resolved
+   - Remaining issues
+   - Recommendations
+
+9. NEXT_STEPS.md should contain:
+   - Missing integrations
+   - Missing Supabase implementation
+   - Missing authentication work
+   - Missing storage work
+   - Missing API work
+   - Missing business logic
+   - Technical debt
+   - Priority-ordered action list
+
+10. After migration:
+    - Run install.
+    - Fix import errors.
+    - Fix TypeScript errors where straightforward.
+    - Fix path alias issues.
+    - Verify build passes.
+    - Verify dev server starts.
+
+11. Produce a final summary:
+    - What was merged
+    - What was removed
+    - What still requires manual work
+    - Risk areas
+    - Recommended next actions
+
+Goal:
+Create a clean monorepo-style structure where zamproject-hono remains the backend/API layer and Router-postal-v1 becomes the frontend application under /frontend, with updated documentation and a clear migration report.
+Do not blindly copy files. First perform repository analysis and comparison, then propose the safest merge strategy. Minimize changes to working code, preserve git history where possible, and document every architectural decision in MIGRATION_REPORT.md.

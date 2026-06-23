@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "wylHBx__v7mHsnKURWcWD"
+uri = "file://zamproject-hono-merged.tar.gz"
+type = "unspecified"
+title = "zamproject-hono — Merged Repository"
